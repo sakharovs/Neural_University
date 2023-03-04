@@ -53,11 +53,31 @@ print('y_val', y_val.shape)
 # Создание модели
 model = Sequential()
 
-model.add(Danse(100, input_dim=x_train.shape[1], activation='relu'))
-model.add(Danse(10,  activation='relu'))
-(Danse(3, activation='relu'))
+model.add(Dense(100, input_dim=x_train.shape[1], activation='relu'))
+model.add(Dense(10,  activation='relu'))
+model.add(Dense(3, activation='relu'))
 
 model.summary()
 
+# Компиляция
+model.compile(optimizer=Adam(learning_rate=0.001),
+              metrics=['accuracy'],
+              loss='categorical_crossentropy')
 
+# Обучение модели
+history = model.fit(x_train,
+                    y_train,
+                    validation_data=(x_val, y_val),
+                    epochs=500,
+                    batch_size = 32)
 
+# Вывод графика обучения
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.show()
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.show()
+
+model.evaluate(x_test, y_test)
