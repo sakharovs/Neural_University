@@ -1,0 +1,10 @@
+born_year = int(input("Привет! Назови год рождения А.С.Пушкина: "))
+if born_year == 1799:
+    print("Верно!")
+    born_day = int(input('А число месяца какое? '))
+    if born_day == 6:
+        print("Верно!")
+    else:
+        print('Неверный день рождения!')
+else:
+    print('Неверный год!')
