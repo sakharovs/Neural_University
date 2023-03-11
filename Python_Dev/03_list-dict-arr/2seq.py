@@ -1,5 +1,5 @@
 any_string = input("Введите цифры через запятую: ")
 num_list = list(map(int, any_string.split(',')))
-unique_set = set(num for num in num_list if num_list.count(num)==1)
+unique_set = set(num for num in num_list if num_list.count(num) == 1)
 unique_list = list(unique_set)
 print(*unique_list, sep=', ')
